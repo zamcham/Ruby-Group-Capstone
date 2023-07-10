@@ -21,11 +21,8 @@ class Main
 
   def select_option(option)
     case option
-    when 1..6
+    when 1..9
       puts "Method #{option}"
-      sleep(1)
-    when 7..9
-      puts "Method #{option + 1}"
       sleep(1)
     else
       puts '-------------------------------------------'
