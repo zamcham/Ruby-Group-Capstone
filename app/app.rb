@@ -1,5 +1,6 @@
-# require_relative 'models/item'
-# require_relative 'models/genre'
+require_relative 'models/music_album'
+require_relative 'models/item'
+require_relative 'models/genre'
 
 # The App class handles the app logic
 class App
@@ -58,6 +59,21 @@ class App
         puts "ID: #{genre.id}, Genre: #{genre.name}"
       end
     end
+  end
+
+  def add_a_music_album
+    puts "\nAdd a new Music Album"
+    print 'Enter the Music Album\'s genre: '
+    genre = gets.chomp
+    print 'Enter the Music Album\'s author: '
+    author = gets.chomp
+    print 'Enter the Music Album\'s publish date(yyyy-mm-dd): '
+    publish_date = gets.chomp
+    print 'Is it available on Spotify (Y/N): '
+    on_spotify = gets.chomp.upcase
+    music_album = MusicAlbum.new(genre, author, publish_date, on_spotify)
+    @music_albums << music_album
+    puts 'Music Album added successfully!'
   end
 
   def create_book
