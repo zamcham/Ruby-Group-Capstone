@@ -35,6 +35,11 @@ class Menu
   def process_choice(choice)
     action = OPTIONS[choice]
     if action
+      =begin 
+        The following line pass in the action as a parameter 
+        and calls a method that matched than name 
+        on the app class
+      =end
       @app.send(action)
     else
       puts 'Invalid choice. Please try again.'
