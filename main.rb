@@ -10,6 +10,14 @@ class Main
     @menu = Menu.new(@app)
   end
 
+  def display_menu
+    @app.display_menu
+  end
+
+  def display_menu
+    @app.display_menu
+  end
+
   def run
     # TODO: implement later ↓
     # @app.load_data_from_files
@@ -18,9 +26,11 @@ class Main
       choice = gets.chomp.to_i
 
       break unless @menu.process_choice(choice)
+  end
 
-      puts "\n"
-    end
+  def select_method_option
+    puts "Method #{option}"
+    sleep(1)
   end
 end
 

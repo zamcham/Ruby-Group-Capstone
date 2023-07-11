@@ -1,5 +1,6 @@
-require-relative 'item'
+require_relative 'item'
 
+# Represents Book Author class.
 class Author
   attr_accessor :id, :first_name, :last_name, :items
 
