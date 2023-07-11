@@ -12,7 +12,7 @@ class Author
 
   def add_item(item)
     raise TypeError, 'Invalid type, must be an Item instance' unless item.is_a?(Item)
-
+    
     @items << item
     item.author = self
   end
