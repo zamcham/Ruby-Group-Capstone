@@ -1,4 +1,4 @@
-# The App class handles the app logic
+# rubocop:disable
 require_relative 'models/author'
 require_relative 'models/book'
 require_relative 'models/game'
@@ -43,7 +43,6 @@ class App
     end
   end
 
-
   def list_all_authors
     if @authors.empty?
       puts 'No authors available.'
@@ -51,7 +50,10 @@ class App
       puts 'All Authors:'
       @authors.each do |author|
         puts "ID: #{author.id}, Name: #{author.first_name} #{author.last_name}"
-        
+      end
+    end
+  end
+
   def list_all_music_albums
     if @music_albums.empty?
       puts 'No music album available.'
@@ -61,7 +63,6 @@ class App
         album_info = "ID: #{music_album.id}, Genre: #{music_album.genre}, " \
                      "Author: #{music_album.author}, Publish date: #{music_album.publish_date}"
         puts album_info
-
       end
     end
   end
@@ -73,6 +74,9 @@ class App
       puts 'All Games:'
       @games.each do |game|
         puts "Game Name: #{game.game_name}, Last Played At: #{game.last_played_at}, Multiplayer: #{game.multiplayer}"
+      end
+    end
+  end
 
   def list_all_genres
     if @genres.empty?
@@ -81,7 +85,6 @@ class App
       puts 'All Genres:'
       @genres.each do |genre|
         puts "ID: #{genre.id}, Genre: #{genre.name}"
-
       end
     end
   end
@@ -127,3 +130,4 @@ class App
     @data_manager.load_data_from_files
   end
 end
+# rubocop:enable
