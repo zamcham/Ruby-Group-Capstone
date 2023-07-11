@@ -6,6 +6,8 @@ class App
     @people = []
     @books = []
     @rentals = []
+    @music_albums = []
+    @genres = []
     # TODO: ↓ Add when working on data management
     # @data_manager = DataManager.new(self)
   end
@@ -29,6 +31,30 @@ class App
       puts 'All People:'
       @people.each do |person|
         puts "ID: #{person.id}, Name: #{person.name}, Age: #{person.age}, Type: #{person.class}"
+      end
+    end
+  end
+
+  def list_all_music_albums
+    if @music_albums.empty?
+      puts 'No music album available.'
+    else
+      puts 'All Music Albums:'
+      @music_albums.each do |music_album|
+        album_info = "ID: #{music_album.id}, Genre: #{music_album.genre}, "\
+                      "Author: #{music_album.author}, Publish date: #{music_album.publish_date}"
+        puts album_info
+      end
+    end
+  end
+
+  def list_all_genres
+    if @genres.empty?
+      puts 'Any genre available.'
+    else
+      puts 'All Genres:'
+      @genres.each do |genre|
+        puts "ID: #{genre.id}, Genre: #{genre.name}"
       end
     end
   end
