@@ -41,8 +41,8 @@ class App
     else
       puts 'All Music Albums:'
       @music_albums.each do |music_album|
-        album_info = "ID: #{music_album.id}, Genre: #{music_album.genre}, "\
-                      "Author: #{music_album.author}, Publish date: #{music_album.publish_date}"
+        album_info = "ID: #{music_album.id}, Genre: #{music_album.genre}, " \
+                     "Author: #{music_album.author}, Publish date: #{music_album.publish_date}"
         puts album_info
       end
     end
