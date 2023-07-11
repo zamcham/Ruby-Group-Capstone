@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require_relative 'app'
 
 # Represents the main entry point for the Ruby Console App.
