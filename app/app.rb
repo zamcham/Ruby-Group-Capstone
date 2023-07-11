@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# The App class handles the app logic
 class App
   attr_accessor :people, :books, :rentals
 
@@ -5,7 +8,8 @@ class App
     @people = []
     @books = []
     @rentals = []
-    @data_manager = DataManager.new(self)
+    # TODO: ↓ Add when working on data management 
+    # @data_manager = DataManager.new(self)
   end
 
   def list_all_books
@@ -19,6 +23,7 @@ class App
     end
   end
 
+  # TODO: Need to refactor based on proper methods 
   def list_all_people
     if @people.empty?
       puts 'No people available.'
