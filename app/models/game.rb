@@ -12,6 +12,6 @@ class Game < Item
   end
 
   def can_be_archived?
-    super && (Date.today - @last_played_at).to_i > (2 * 365)
+    super && (Date.today - @last_played_at).to_i > (730)
   end
 end
