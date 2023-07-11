@@ -64,7 +64,7 @@ class App
   def add_a_music_album
     puts "\nAdd a new Music Album"
     print 'Enter the Music Album\'s genre: '
-    genre_name = gets.chomp
+    genre_name = gets.chomp.to_s
     genre = find_or_create_genre(genre_name)
     print 'Enter the Music Album\'s author: '
     author = gets.chomp
