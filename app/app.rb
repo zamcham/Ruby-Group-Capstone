@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 # The App class handles the app logic
 class App
   attr_accessor :people, :books, :rentals
