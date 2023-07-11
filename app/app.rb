@@ -97,6 +97,7 @@ class App
   end
 
   private
+
   def find_or_create_genre(genre_name)
     genre = @genres.find { |g| g.name == genre_name }
     return genre if genre
@@ -104,7 +105,7 @@ class App
     new_genre = Genre.new(Random.rand(1..10_000), genre_name)
     @genres << new_genre
     new_genre
-  end    
+  end
 
   def quit
     @data_manager.save_data_to_files
