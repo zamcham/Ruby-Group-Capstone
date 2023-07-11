@@ -1,11 +1,18 @@
+require_relative 'app'
+
 class Main
   def initialize
+    @app = App.new(self)
     loop do
       show_console_options
       option = get_user_input('Enter your choice: ').to_i
       break if option == 10
       select_option(option)
     end
+  end
+
+  def display_menu
+    @app.display_menu
   end
 
   def show_console_options
@@ -21,9 +28,11 @@ class Main
 
   def select_option(option)
     case option
-    when 1..9
+    when 1..7
       puts "Method #{option}"
       sleep(1)
+    when 8
+      @app.add_music_album
     else
       puts '-------------------------------------------'
       puts "\nInvalid option, try again!"
