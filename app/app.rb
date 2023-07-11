@@ -64,7 +64,8 @@ class App
   def add_a_music_album
     puts "\nAdd a new Music Album"
     print 'Enter the Music Album\'s genre: '
-    genre = gets.chomp
+    genre_name = gets.chomp
+    genre = find_or_create_genre(genre_name)
     print 'Enter the Music Album\'s author: '
     author = gets.chomp
     print 'Enter the Music Album\'s publish date(yyyy-mm-dd): '
@@ -73,6 +74,7 @@ class App
     on_spotify = gets.chomp.upcase
     music_album = MusicAlbum.new(genre, author, publish_date, on_spotify)
     @music_albums << music_album
+    genre.add_item(music_album)
     puts 'Music Album added successfully!'
   end
 
@@ -94,6 +96,16 @@ class App
     @people.find { |p| p.id == person_id }
   end
 
+  private
+  def find_or_create_genre(genre_name)
+    genre = @genres.find { |g| g.name == genre_name }
+    return genre if genre
+
+    new_genre = Genre.new(Random.rand(1..10_000), genre_name)
+    @genres << new_genre
+    new_genre
+  end    
+
   def quit
     @data_manager.save_data_to_files
     false
@@ -103,12 +115,3 @@ class App
     @data_manager.load_data_from_files
   end
 end
-
-# genre = Genre.new(1, 'Rock')
-# item = Item.new('Rock', 'Author', '2022-01-01', 'Label')
-# genre.add_item(item)
-
-# puts 'Genre Items:'
-# genre.items.each do |item|
-#   puts "Genre: #{item.genre}, Author: #{item.author}"
-# end
