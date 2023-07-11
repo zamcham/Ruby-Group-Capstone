@@ -36,7 +36,7 @@ class Menu
     action = OPTIONS[choice]
     if action
       =begin 
-        The following line pass in the action as a parameter 
+        The following line passes in the action as a parameter 
         and calls a method that matched than name 
         on the app class
       =end
