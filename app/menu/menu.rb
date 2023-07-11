@@ -9,7 +9,7 @@ class Menu
     6 => :list_all_authors,
     7 => :add_a_book,
     8 => :add_a_music_album,
-    9 => :add_a_genre,
+    9 => :add_a_game,
     0 => :quit
   }.freeze
 
