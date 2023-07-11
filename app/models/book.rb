@@ -1,10 +1,13 @@
-require-relative 'Item'
+# frozen_string_literal: true
 
+require_relative 'item'
+
+# Class than handles book creation
 class Book < Item
   attr_accessor :publisher, :cover_state
 
-  def initialize(id, genre, author, source, label, publish_date, archived, publisher, cover_state)
-    super(id, genre, author, source, label, publish_date, archived)
+  # TODO: check remaining attributes missing
+  def initialize_additional_info(publisher, cover_state)
     @publisher = publisher
     @cover_state = cover_state
   end
