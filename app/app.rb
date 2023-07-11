@@ -1,5 +1,5 @@
-require_relative 'models/item'
-require_relative 'models/genre'
+# require_relative 'models/item'
+# require_relative 'models/genre'
 
 # The App class handles the app logic
 class App
