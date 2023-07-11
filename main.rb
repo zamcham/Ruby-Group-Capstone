@@ -1,5 +1,8 @@
+# frozen_string_literal: true
+
 require_relative 'app'
 
+# Represents the main entry point for the Ruby Console App.
 class Main
   def initialize
     @app = App.new(self)
@@ -7,6 +10,7 @@ class Main
       show_console_options
       option = get_user_input('Enter your choice: ').to_i
       break if option == 10
+
       select_option(option)
     end
   end
@@ -29,8 +33,7 @@ class Main
   def select_option(option)
     case option
     when 1..7
-      puts "Method #{option}"
-      sleep(1)
+      select_method_option(option)
     when 8
       @app.add_music_album
     else
@@ -38,6 +41,11 @@ class Main
       puts "\nInvalid option, try again!"
       puts "\n-------------------------------------------"
     end
+  end
+
+  def select_method_option
+    puts "Method #{option}"
+    sleep(1)
   end
 
   def get_user_input(prompt)

@@ -1,5 +1,8 @@
+# frozen_string_literal: true
+
 require_relative 'item'
 
+# Represents a Music Album Item.
 class MusicAlbum < Item
   attr_accessor :on_spotify
 

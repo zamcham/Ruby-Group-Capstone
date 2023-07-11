@@ -1,5 +1,8 @@
+# frozen_string_literal: true
+
 require_relative 'item'
 
+# Represents Genre class.
 class Genre
   attr_accessor :id, :name, :items
 
@@ -14,4 +17,3 @@ class Genre
     @items << item
   end
 end
-
