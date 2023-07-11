@@ -18,10 +18,6 @@ class Item
   end
 
   def move_to_archive
-    @archived = if can_be_archived?
-                  true
-                else
-                  false
-                end
+    @archived = can_be_archived?
   end
 end
