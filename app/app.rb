@@ -1,11 +1,12 @@
+require_relative 'models/item'
+require_relative 'models/genre'
+
 # The App class handles the app logic
 class App
-  attr_accessor :people, :books, :rentals
+  attr_accessor :books, :music_albums, :genres
 
   def initialize
-    @people = []
     @books = []
-    @rentals = []
     @music_albums = []
     @genres = []
     # TODO: ↓ Add when working on data management
@@ -86,3 +87,12 @@ class App
     @data_manager.load_data_from_files
   end
 end
+
+# genre = Genre.new(1, 'Rock')
+# item = Item.new('Rock', 'Author', '2022-01-01', 'Label')
+# genre.add_item(item)
+
+# puts 'Genre Items:'
+# genre.items.each do |item|
+#   puts "Genre: #{item.genre}, Author: #{item.author}"
+# end
