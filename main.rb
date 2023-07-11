@@ -1,40 +1,27 @@
+# frozen_string_literal: true
+
+require_relative 'app/app'
+require_relative 'app/menu/menu'
+
+# Main class is used to start the app.
 class Main
   def initialize
+    @app = App.new
+    @menu = Menu.new(@app)
+  end
+
+  def run
+    # TODO: implement later ↓
+    # @app.load_data_from_files
     loop do
-      show_console_options
-      option = get_user_input('Enter your choice: ').to_i
-      break if option == 10
-      select_option(option)
-    end
-  end
+      @menu.display
+      choice = gets.chomp.to_i
 
-  def show_console_options
-    options_array = ['List All Books', 'List All Music Albums', 'List All Games', 'List All Genres',
-                     'List All Labels', 'List All Authors', 'Add Book', 'Add a Music Album', 'Add a Game', 'Exit']
-    puts "\nWelcome to the Ruby Console App!"
-    puts "\nPlease choose an option from the list below:"
-    puts '-------------------------------------------'
-    options_array.each_with_index do |option, index|
-      puts "#{index + 1}. #{option}"
-    end
-  end
+      break unless @menu.process_choice(choice)
 
-  def select_option(option)
-    case option
-    when 1..9
-      puts "Method #{option}"
-      sleep(1)
-    else
-      puts '-------------------------------------------'
-      puts "\nInvalid option, try again!"
-      puts "\n-------------------------------------------"
+      puts "\n"
     end
-  end
-
-  def get_user_input(prompt)
-    print prompt
-    gets.chomp
   end
 end
 
-Main.new
+Main.new.run
