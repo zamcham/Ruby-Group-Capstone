@@ -1,4 +1,7 @@
+# frozen_string_literal: true
+
 require_relative 'models/book'
+require_relative '../data/data_manager'
 
 # The App class handles the app logic
 class App
@@ -10,8 +13,7 @@ class App
     @rentals = []
     @music_albums = []
     @genres = []
-    # TODO: ↓ Add when working on data management
-    # @data_manager = DataManager.new(self)
+    @data_manager = DataManager.new(self)
   end
 
   def list_all_books
@@ -54,7 +56,7 @@ class App
 
   def list_all_genres
     if @genres.empty?
-      puts 'Any genre available.'
+      puts 'No genre available.'
     else
       puts 'All Genres:'
       @genres.each do |genre|
@@ -63,8 +65,8 @@ class App
     end
   end
 
-  def add_a_book
-    book_data = collect_book_data
+  def add_a_book(book_data = nil)
+    book_data ||= collect_book_data
     book = Book.new(book_data)
     @books << book
     puts 'Book created successfully.'
@@ -92,7 +94,7 @@ class App
       cover_state: get_input("Enter the book's cover state")
     }
   end
-  
+
   def get_input(prompt)
     print "#{prompt}: "
     gets.chomp

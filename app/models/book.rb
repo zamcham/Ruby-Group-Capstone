@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative 'item'
 require 'date'
 
@@ -8,10 +10,10 @@ class Book < Item
 
   def initialize(book_data)
     super(
-    book_data[:genre],
-    book_data[:author],
-    book_data[:publish_date],
-    book_data[:label]
+      book_data[:genre],
+      book_data[:author],
+      book_data[:publish_date],
+      book_data[:label]
     )
     @title = book_data[:title]
     @publisher = book_data[:publisher]

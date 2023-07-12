@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Represents Label class.
 class Label
   attr_reader :title, :color, :items, :id
