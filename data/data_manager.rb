@@ -12,7 +12,6 @@ class DataManager
 
   def load_data_from_files
     @app.books = load_from_json('books.json')
-    p load_from_json('books.json')
   end
 
   def save_to_json(filename, data)
