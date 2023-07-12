@@ -109,12 +109,12 @@ class DataManager
     @app.music_albums.map do |music_album|
       {
         'type' => music_album.class.name,
-        'id' => music_album.id,
         'title' => music_album.title,
         'author' => music_album.author,
         'genre' => music_album.genre,
         'publish_date' => music_album.publish_date,
         'on_spotify' => music_album.on_spotify,
+        'label' => music_album.label
       }
     end
   end

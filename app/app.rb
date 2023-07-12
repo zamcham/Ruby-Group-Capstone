@@ -63,8 +63,10 @@ class App
     else
       puts 'All Music Albums:'
       @music_albums.each_with_index do |music_album, index|
-        puts "#{index + 1}. Title: #{music_album.title}, Genre: #{music_album.genre}, " 
-        puts "Author: #{music_album.author}, Publish date: #{music_album.publish_date}"
+        puts "#{index + 1}. ID: #{music_album.id}" 
+        puts "Title: #{music_album.title}, Label: #{music_album.label}," 
+        puts "Genre: #{music_album.genre}, Author: #{music_album.author},"
+        puts "Publish date: #{music_album.publish_date}, On Spotify: #{music_album.on_spotify}"
       end
     end
   end

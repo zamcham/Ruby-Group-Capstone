@@ -4,7 +4,7 @@ require 'date'
 # Represents a Music Album Item.
 class MusicAlbum < Item
   attr_accessor :on_spotify, :publish_date
-  attr_reader :title, :id, :genre
+  attr_reader :title, :id, :genre, :label
 
   def initialize(music_album_data)
     super(
