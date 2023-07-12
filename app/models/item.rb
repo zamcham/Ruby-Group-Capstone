@@ -30,7 +30,7 @@ class Item
     existing_genre = Genre.genres.find { |genre| genre.name == genre_name }
     return existing_genre unless existing_genre.nil?
 
-    new_genre = Genre.new(genre_name)
+    new_genre = Genre.new(Random.rand(1..10_000), genre_name)
     Genre.genres << new_genre
     new_genre
   end

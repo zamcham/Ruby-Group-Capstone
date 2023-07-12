@@ -83,12 +83,13 @@ class App
   end
 
   def list_all_genres
-    if @genres.empty?
+    if Label.labels.empty?
       puts 'No genre available.'
     else
       puts '-------------------'
       puts 'All Genres:'
-      @genres.each do |genre|
+      unique_genres = Genre.genres.uniq
+      unique_genres.each do |genre|
         puts "ID: #{genre.id}, Genre: #{genre.name}"
       end
     end
