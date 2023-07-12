@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require_relative 'app/app'
 require_relative 'app/menu/menu'
 
