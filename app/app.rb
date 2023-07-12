@@ -10,6 +10,7 @@ require_relative '../data/data_manager'
 require_relative 'models/label'
 require 'date'
 
+# rubocop:disable Metrics/ClassLength
 class App
   attr_accessor :books, :music_albums, :genres, :games
 
@@ -187,5 +188,5 @@ class App
     gets.chomp
   end
 end
-
+# rubocop:enable Metrics/ClassLength
 # rubocop:enable
