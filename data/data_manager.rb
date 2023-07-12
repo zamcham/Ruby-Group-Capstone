@@ -8,6 +8,7 @@ class DataManager
 
   def save_data_to_files
     save_to_json('books.json', serialize_books)
+    save_to_json('music_album.json', serialize_music_albums)
   end
 
   def load_data_from_files
@@ -92,6 +93,19 @@ class DataManager
         'publish_date' => book.publish_date,
         'publisher' => book.publisher,
         'cover_state' => book.cover_state
+      }
+    end
+  end
+
+  def serialize_music_albums
+    @app.music_albums.map do |music_album|
+      {
+        'type' => music_album.class.name,
+        'ID' => music_album.id,
+        'author' => music_album.author,
+        'genre' => music_album.genre,
+        'publish_date' => music_album.publish_date,
+        'on_spotify' => music_album.on_spotify,
       }
     end
   end
