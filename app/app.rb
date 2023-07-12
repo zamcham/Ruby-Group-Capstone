@@ -2,15 +2,17 @@
 require_relative 'models/author'
 require_relative 'models/book'
 require_relative 'models/game'
+require_relative 'models/music_album'
+require_relative 'models/item'
+require_relative 'models/genre'
+
 require 'date'
 
 class App
-  attr_accessor :people, :books, :rentals, :games, :authors
+  attr_accessor :books, :music_albums, :genres, :games, :authors
 
   def initialize
-    @people = []
     @books = []
-    @rentals = []
     @games = []
     @authors = []
     @music_albums = []
@@ -103,6 +105,23 @@ class App
     puts 'Game created successfully.'
   end
 
+  def add_a_music_album
+    puts "\nAdd a new Music Album"
+    print 'Enter the Music Album\'s genre: '
+    genre_name = gets.chomp.to_s
+    genre = find_or_create_genre(genre_name)
+    print 'Enter the Music Album\'s author: '
+    author = gets.chomp
+    print 'Enter the Music Album\'s publish date(yyyy-mm-dd): '
+    publish_date = gets.chomp
+    print 'Is it available on Spotify (Y/N): '
+    on_spotify = gets.chomp.upcase
+    music_album = MusicAlbum.new(genre, author, publish_date, on_spotify)
+    @music_albums << music_album
+    genre.add_item(music_album)
+    puts 'Music Album added successfully!'
+  end
+
   def create_book
     print 'Enter the book\'s title: '
     title = gets.chomp
@@ -119,6 +138,17 @@ class App
     print 'Enter the person\'s ID: '
     person_id = gets.chomp.to_i
     @people.find { |p| p.id == person_id }
+  end
+
+  private
+
+  def find_or_create_genre(genre_name)
+    genre = @genres.find { |g| g.name == genre_name }
+    return genre if genre
+
+    new_genre = Genre.new(Random.rand(1..10_000), genre_name)
+    @genres << new_genre
+    new_genre
   end
 
   def quit
