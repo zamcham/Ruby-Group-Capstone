@@ -2,6 +2,7 @@
 require_relative 'models/author'
 require_relative 'models/book'
 require_relative 'models/game'
+require_relative '../data/data_manager'
 require 'date'
 
 class App
@@ -87,20 +88,6 @@ class App
         puts "ID: #{genre.id}, Genre: #{genre.name}"
       end
     end
-  end
-
-  def add_a_game
-    print 'Enter the game name: '
-    game_name = gets.chomp
-    print 'Enter whether the game is multiplayer (true/false): '
-    multiplayer = gets.chomp.downcase == 'true'
-    print 'Enter the game\'s publish date (YYYY-MM-DD): '
-    publish_date = gets.chomp
-    print 'Enter the last played date (YYYY-MM-DD): '
-    last_played_at = gets.chomp
-    game = Game.new(game_name, multiplayer, publish_date, last_played_at)
-    @games << game
-    puts 'Game created successfully.'
   end
 
   def add_a_game
