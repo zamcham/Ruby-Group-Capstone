@@ -1,4 +1,5 @@
 # rubocop:disable
+
 require_relative 'models/author'
 require_relative 'models/book'
 require_relative 'models/game'
@@ -120,7 +121,7 @@ class App
       game_name: get_input('Enter the game name'),
       genre: get_input('Enter the game genre'),
       author: get_input('Enter the game author'),
-      publish_date: get_input('Enter the game's publish date in format YYYY-MM-DD'),
+      publish_date: get_input('Enter the game\'s publish date in format YYYY-MM-DD'),
       label: get_input('Enter the game label'),
       multiplayer: get_input('Enter whether the game is multiplayer (true/false)'),
       last_played_at: get_input('Enter the last played date in format YYYY-MM-DD')
@@ -186,4 +187,5 @@ class App
     gets.chomp
   end
 end
+
 # rubocop:enable

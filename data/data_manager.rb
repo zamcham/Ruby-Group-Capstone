@@ -1,3 +1,5 @@
+# rubocop:disable Metrics/CyclomaticComplexity
+
 require 'json'
 require_relative '../app/app'
 
@@ -128,3 +130,5 @@ class DataManager
     end
   end
 end
+
+# rubocop:disable Metrics/CyclomaticComplexity
