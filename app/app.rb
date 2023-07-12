@@ -173,14 +173,5 @@ class App
     print "#{prompt}: "
     gets.chomp
   end
-
-  def find_or_create_genre(genre_name)
-    genre = @genres.find { |g| g.name == genre_name }
-    return genre if genre
-
-    new_genre = Genre.new(Random.rand(1..10_000), genre_name)
-    @genres << new_genre
-    new_genre
-  end
 end
 # rubocop:enable
