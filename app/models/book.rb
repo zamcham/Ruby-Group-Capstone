@@ -19,8 +19,6 @@ class Book < Item
   end
 
   def can_be_archived?
-    current_year = Time.now.year
-    ten_years_ago = current_year - 10
-    publish_date < ten_years_ago
+    super || cover_state == 'bad'
   end
 end

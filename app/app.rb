@@ -5,8 +5,8 @@ require_relative 'models/game'
 require_relative 'models/music_album'
 require_relative 'models/item'
 require_relative 'models/genre'
-
 require_relative '../data/data_manager'
+require_relative 'models/label'
 require 'date'
 
 class App
@@ -85,9 +85,23 @@ class App
     if @genres.empty?
       puts 'No genre available.'
     else
+      puts '-------------------'
       puts 'All Genres:'
       @genres.each do |genre|
         puts "ID: #{genre.id}, Genre: #{genre.name}"
+      end
+    end
+  end
+
+  def list_all_labels
+    if Label.labels.empty?
+      puts 'No labels found'
+    else
+      puts '-------------------'
+      puts 'All Labels:'
+      unique_labels = Label.labels.uniq
+      unique_labels.each do |label|
+        puts "Label Name: #{label.title}, Color: #{label.color}"
       end
     end
   end

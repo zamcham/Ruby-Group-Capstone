@@ -1,9 +1,14 @@
 # Represents Label class.
 class Label
-  attr_reader :title, :color, :items, :id
+  attr_reader :title, :color, :items, :id, :labels
 
-  def initialize(title, color, id = nil)
-    @id = id || Random.rand(1..1000)
+  @labels = []
+
+  class << self
+    attr_reader :labels
+  end
+
+  def initialize(title, color = 'blue')
     @title = title
     @color = color
     @items = []
