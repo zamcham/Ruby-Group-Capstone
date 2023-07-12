@@ -10,12 +10,11 @@ require_relative 'models/label'
 require 'date'
 
 class App
-  attr_accessor :books, :music_albums, :genres, :games, :authors
+  attr_accessor :books, :music_albums, :genres, :games
 
   def initialize
     @books = []
     @games = []
-    @authors = []
     @music_albums = []
     @genres = []
     @data_manager = DataManager.new(self)
@@ -46,17 +45,6 @@ class App
     end
   end
 
-  def list_all_authors
-    if @authors.empty?
-      puts 'No authors available.'
-    else
-      puts 'All Authors:'
-      @authors.each do |author|
-        puts "ID: #{author.id}, Name: #{author.first_name} #{author.last_name}"
-      end
-    end
-  end
-
   def list_all_music_albums
     if @music_albums.empty?
       puts 'No music album available.'
@@ -76,7 +64,15 @@ class App
     else
       puts 'All Games:'
       @games.each do |game|
-        puts "Game Name: #{game.game_name}, Last Played At: #{game.last_played_at}, Multiplayer: #{game.multiplayer}"
+        puts "========================================"
+        puts "Game Name: #{game.game_name}"
+        puts "Genre: #{game.genre}"
+        puts "Author: #{game.author}"
+        puts "Publish Date: #{game.publish_date}"
+        puts "Label: #{game.label}"
+        puts "Last Played At: #{game.last_played_at}"
+        puts "Multiplayer: #{game.multiplayer}"
+        puts "========================================"
       end
     end
   end
@@ -106,16 +102,34 @@ class App
     end
   end
 
+  def list_all_authors
+    if Author.authors.empty?
+      puts 'No authors found'
+    else
+      puts '-------------------'
+      puts 'All Authors:'
+      unique_authors = Author.authors.uniq
+      unique_authors.each do |author|
+        puts "Author Name: #{author.first_name} #{author.last_name}"
+      end
+    end
+  end
+
+  def collect_game_data
+    {
+      game_name: get_input("Enter the game name"),
+      genre: get_input("Enter the game genre"),
+      author: get_input("Enter the game author"),
+      publish_date: get_input("Enter the game's publish date in format YYYY-MM-DD"),
+      label: get_input("Enter the game label"),
+      multiplayer: get_input("Enter whether the game is multiplayer (true/false)"),
+      last_played_at: get_input("Enter the last played date in format YYYY-MM-DD")
+    }
+  end
+
   def add_a_game
-    print 'Enter the game name: '
-    game_name = gets.chomp
-    print 'Enter whether the game is multiplayer (true/false): '
-    multiplayer = gets.chomp.downcase == 'true'
-    print 'Enter the game\'s publish date (YYYY-MM-DD): '
-    publish_date = gets.chomp
-    print 'Enter the last played date (YYYY-MM-DD): '
-    last_played_at = gets.chomp
-    game = Game.new(game_name, multiplayer, publish_date, last_played_at)
+    game_data = collect_game_data
+    game = Game.new(game_data)
     @games << game
     puts 'Game created successfully.'
   end
