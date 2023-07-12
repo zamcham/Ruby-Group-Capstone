@@ -13,8 +13,8 @@ class Main
   end
 
   def run
-    # TODO: implement later ↓
-    # @app.load_data_from_files
+    @app.load_data_from_files
+
     loop do
       @menu.display
       choice = gets.chomp.to_i

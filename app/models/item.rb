@@ -9,7 +9,7 @@ class Item
     @genre = genre
     @author = author
     @label = label
-    @publish_date = Date.parse(publish_date)
+    @publish_date = publish_date
     @archived = false
   end
 

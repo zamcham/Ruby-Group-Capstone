@@ -6,6 +6,7 @@ require_relative 'models/music_album'
 require_relative 'models/item'
 require_relative 'models/genre'
 
+require_relative '../data/data_manager'
 require 'date'
 
 class App
@@ -17,9 +18,7 @@ class App
     @authors = []
     @music_albums = []
     @genres = []
-
-    # TODO: ↓ Add when working on data management
-    # @data_manager = DataManager.new(self)
+    @data_manager = DataManager.new(self)
   end
 
   def list_all_books
@@ -29,6 +28,8 @@ class App
       puts 'All Books:'
       @books.each_with_index do |book, index|
         puts "#{index + 1}. Title: #{book.title}, Author: #{book.author}"
+        puts "Genre: #{book.genre}, Label: #{book.label}"
+        puts "Publish Date: #{book.publish_date}, Publisher: #{book.publisher}, Cover State: #{book.cover_state}"
       end
     end
   end
@@ -82,7 +83,7 @@ class App
 
   def list_all_genres
     if @genres.empty?
-      puts 'Any genre available.'
+      puts 'No genre available.'
     else
       puts 'All Genres:'
       @genres.each do |genre|
@@ -122,33 +123,11 @@ class App
     puts 'Music Album added successfully!'
   end
 
-  def create_book
-    print 'Enter the book\'s title: '
-    title = gets.chomp
-    print 'Enter the book\'s author: '
-    author = gets.chomp
-    book = Book.new(title, author)
+  def add_a_book(book_data = nil)
+    book_data ||= collect_book_data
+    book = Book.new(book_data)
     @books << book
     puts 'Book created successfully.'
-  end
-
-  def select_person
-    puts 'Select a person to create a rental:'
-    list_all_people
-    print 'Enter the person\'s ID: '
-    person_id = gets.chomp.to_i
-    @people.find { |p| p.id == person_id }
-  end
-
-  private
-
-  def find_or_create_genre(genre_name)
-    genre = @genres.find { |g| g.name == genre_name }
-    return genre if genre
-
-    new_genre = Genre.new(Random.rand(1..10_000), genre_name)
-    @genres << new_genre
-    new_genre
   end
 
   def quit
@@ -158,6 +137,25 @@ class App
 
   def load_data_from_files
     @data_manager.load_data_from_files
+  end
+
+  private
+
+  def collect_book_data
+    {
+      title: get_input("Enter the book's title"),
+      author: get_input("Enter the book's author"),
+      genre: get_input("Enter the book's genre"),
+      label: get_input("Enter the book's label"),
+      publish_date: get_input("Enter the book's publish date in format YYYY-MM-DD"),
+      publisher: get_input("Enter the book's publisher"),
+      cover_state: get_input("Enter the book's cover state")
+    }
+  end
+
+  def get_input(prompt)
+    print "#{prompt}: "
+    gets.chomp
   end
 end
 # rubocop:enable
