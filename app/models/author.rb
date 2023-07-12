@@ -1,7 +1,11 @@
-require_relative 'item'
-
 class Author
-  attr_reader :id, :first_name, :last_name, :items
+  attr_reader :id, :first_name, :last_name, :authors, :items
+
+  @authors = []
+
+  class << self
+    attr_reader :authors
+  end
 
   def initialize(id, first_name, last_name)
     @id = id || Random.rand(1...1000)
@@ -11,9 +15,6 @@ class Author
   end
 
   def add_item(item)
-    raise TypeError, 'Invalid type, must be an Item instance' unless item.is_a?(Item)
-
     @items << item
-    item.author = self
   end
 end
