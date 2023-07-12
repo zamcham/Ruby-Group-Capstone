@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative 'app/app'
 require_relative 'app/menu/menu'
 
@@ -13,8 +15,8 @@ class Main
   end
 
   def run
-    # TODO: implement later ↓
-    # @app.load_data_from_files
+    @app.load_data_from_files
+
     loop do
       @menu.display
       choice = gets.chomp.to_i
