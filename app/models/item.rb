@@ -2,7 +2,7 @@ require 'date'
 
 # Represents Item class (parent).
 class Item
-  attr_accessor :archived
+  attr_accessor :archived, :genre, :author
 
   def initialize(genre, author, publish_date, label, id: nil)
     @id = id || Random.rand(1...1000)
