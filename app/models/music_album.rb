@@ -8,7 +8,7 @@ class MusicAlbum < Item
 
   def initialize(music_album_data)
     super(
-      music_album_data[:genre], 
+      music_album_data[:genre],
       music_album_data[:author],
       music_album_data[:publish_date],
       music_album_data[:label]

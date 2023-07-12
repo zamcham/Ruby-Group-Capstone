@@ -54,8 +54,8 @@ class App
       puts 'All Music Albums:'
       @music_albums.each_with_index do |music_album, index|
         puts '-------------------'
-        puts "#{index + 1}. ID: #{music_album.id}" 
-        puts "Title: #{music_album.title}, Label: #{music_album.label}," 
+        puts "#{index + 1}. ID: #{music_album.id},"
+        puts "Title: #{music_album.title}, Label: #{music_album.label},"
         puts "Genre: #{music_album.genre}, Author: #{music_album.author},"
         puts "Publish date: #{music_album.publish_date}, On Spotify: #{music_album.on_spotify}"
       end
@@ -183,7 +183,7 @@ class App
       author: get_input("Enter the Music Album's author"),
       label: get_input("Enter the Music Album's label"),
       publish_date: get_input("Enter the Music Album's publish date(yyyy-mm-dd)"),
-      on_spotify: get_input("Is it available on Spotify (y/n)")
+      on_spotify: get_input('Is it available on Spotify (y/n)')
     }
   end
 
