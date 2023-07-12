@@ -1,1 +1,1 @@
-[{"type":"MusicAlbum","title":"Thriller","author":"Michael Jackson","genre":"Pop","publish_date":"1982-11-29","on_spotify":true,"label":"Music"}]
+[{"type":"MusicAlbum","title":"Thriller","author":"Michael Jackson","genre":"Pop","publish_date":"1982-11-29","on_spotify":false,"label":"Music"},{"type":"MusicAlbum","title":"The Wall","author":"Pink Floyd","genre":"Rock","publish_date":"1979-11-30","on_spotify":false,"label":"Music"}]
