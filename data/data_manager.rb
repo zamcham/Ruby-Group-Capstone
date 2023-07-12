@@ -131,4 +131,4 @@ class DataManager
   end
 end
 
-# rubocop:disable Metrics/CyclomaticComplexity
+# rubocop:enable Metrics/CyclomaticComplexity
