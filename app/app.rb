@@ -61,6 +61,7 @@ class App
     if @music_albums.empty?
       puts 'No music album available.'
     else
+      puts '-------------------'
       puts 'All Music Albums:'
       @music_albums.each_with_index do |music_album, index|
         puts "#{index + 1}. ID: #{music_album.id}" 
