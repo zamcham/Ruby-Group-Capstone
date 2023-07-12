@@ -3,13 +3,18 @@ require 'date'
 
 # Represents a Music Album Item.
 class MusicAlbum < Item
-  attr_accessor :on_spotify, :id, :publish_date
+  attr_accessor :on_spotify, :publish_date
+  attr_reader :title, :id, :genre
 
-  def initialize(genre, author, publish_date, on_spotify, id: nil)
-    super(genre, author, publish_date, nil)
-    @id = id || Random.rand(1...1000)
-    @on_spotify = on_spotify
-    @publish_date = Date.parse(publish_date)
+  def initialize(music_album_data)
+    super(
+      music_album_data[:genre], 
+      music_album_data[:author],
+      music_album_data[:publish_date],
+      music_album_data[:label]
+    )
+    @title = music_album_data[:title]
+    @on_spotify = music_album_data[:on_spotify]
   end
 
   def can_be_archived?

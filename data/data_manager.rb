@@ -8,11 +8,12 @@ class DataManager
 
   def save_data_to_files
     save_to_json('books.json', serialize_books)
-    save_to_json('music_album.json', serialize_music_albums)
+    save_to_json('music_albums.json', serialize_music_albums)
   end
 
   def load_data_from_files
     @app.books = load_from_json('books.json')
+    @app.music_albums = load_from_json('music_albums.json')
   end
 
   def save_to_json(filename, data)
@@ -25,8 +26,8 @@ class DataManager
 
     JSON.parse(File.read(filename)).map do |item|
       case item['type']
-      when 'Student'
-        load_student(item)
+      when 'MusicAlbum'
+        load_music_album(item)
       when 'Teacher'
         load_teacher(item)
       when 'Book'
@@ -37,9 +38,16 @@ class DataManager
     end
   end
 
-  def load_student(item)
-    Student.new(item['age'], item['classroom'], item['name'], parent_permission: item['parent_permission'],
-                                                              id: item['id'].to_i)
+  def load_music_album(item)
+    music_album_data = {
+      title: item['title'],
+      genre: item['genre'],
+      author: item['author'],
+      label: item['label'],
+      publish_date: item['publish_date'],
+      on_spotify: item['on_spotify']
+    }
+    MusicAlbum.new(music_album_data)
   end
 
   def load_teacher(item)
@@ -101,7 +109,8 @@ class DataManager
     @app.music_albums.map do |music_album|
       {
         'type' => music_album.class.name,
-        'ID' => music_album.id,
+        'id' => music_album.id,
+        'title' => music_album.title,
         'author' => music_album.author,
         'genre' => music_album.genre,
         'publish_date' => music_album.publish_date,

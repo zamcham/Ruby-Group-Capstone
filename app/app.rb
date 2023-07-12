@@ -62,10 +62,9 @@ class App
       puts 'No music album available.'
     else
       puts 'All Music Albums:'
-      @music_albums.each do |music_album|
-        album_info = "ID: #{music_album.id}, Genre: #{music_album.genre}, " \
-                     "Author: #{music_album.author}, Publish date: #{music_album.publish_date}"
-        puts album_info
+      @music_albums.each_with_index do |music_album, index|
+        puts "#{index + 1}. Title: #{music_album.title}, Genre: #{music_album.genre}, " 
+        puts "Author: #{music_album.author}, Publish date: #{music_album.publish_date}"
       end
     end
   end
@@ -106,20 +105,10 @@ class App
     puts 'Game created successfully.'
   end
 
-  def add_a_music_album
-    puts "\nAdd a new Music Album"
-    print 'Enter the Music Album\'s genre: '
-    genre_name = gets.chomp.to_s
-    genre = find_or_create_genre(genre_name)
-    print 'Enter the Music Album\'s author: '
-    author = gets.chomp
-    print 'Enter the Music Album\'s publish date(yyyy-mm-dd): '
-    publish_date = gets.chomp
-    print 'Is it available on Spotify (Y/N): '
-    on_spotify = gets.chomp.upcase
-    music_album = MusicAlbum.new(genre, author, publish_date, on_spotify)
+  def add_a_music_album(music_album_data = nil)
+    music_album_data ||= collect_music_album_data
+    music_album = MusicAlbum.new(music_album_data)
     @music_albums << music_album
-    genre.add_item(music_album)
     puts 'Music Album added successfully!'
   end
 
@@ -150,6 +139,17 @@ class App
       publish_date: get_input("Enter the book's publish date in format YYYY-MM-DD"),
       publisher: get_input("Enter the book's publisher"),
       cover_state: get_input("Enter the book's cover state")
+    }
+  end
+
+  def collect_music_album_data
+    {
+      title: get_input("Enter the Music Album's title"),
+      genre: get_input("Enter the Music Album's genre"),
+      author: get_input("Enter the Music Album's author"),
+      label: get_input("Enter the Music Album's label"),
+      publish_date: get_input("Enter the Music Album's publish date(yyyy-mm-dd)"),
+      on_spotify: get_input("Is it available on Spotify (Y/N)")
     }
   end
 
