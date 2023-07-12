@@ -27,7 +27,7 @@ class Item
   end
 
   def find_or_create_author(id)
-    existing_author = Author.authors.find {|author| author.id == id}
+    existing_author = Author.authors.find { |author| author.id == id }
     return existing_author unless existing_author.nil?
 
     new_author = Author.new(id, author, nil)

@@ -64,7 +64,7 @@ class App
     else
       puts 'All Games:'
       @games.each do |game|
-        puts "========================================"
+        puts '========================================'
         puts "Game Name: #{game.game_name}"
         puts "Genre: #{game.genre}"
         puts "Author: #{game.author}"
@@ -72,7 +72,7 @@ class App
         puts "Label: #{game.label}"
         puts "Last Played At: #{game.last_played_at}"
         puts "Multiplayer: #{game.multiplayer}"
-        puts "========================================"
+        puts '========================================'
       end
     end
   end
@@ -117,13 +117,13 @@ class App
 
   def collect_game_data
     {
-      game_name: get_input("Enter the game name"),
-      genre: get_input("Enter the game genre"),
-      author: get_input("Enter the game author"),
-      publish_date: get_input("Enter the game's publish date in format YYYY-MM-DD"),
-      label: get_input("Enter the game label"),
-      multiplayer: get_input("Enter whether the game is multiplayer (true/false)"),
-      last_played_at: get_input("Enter the last played date in format YYYY-MM-DD")
+      game_name: get_input('Enter the game name'),
+      genre: get_input('Enter the game genre'),
+      author: get_input('Enter the game author'),
+      publish_date: get_input('Enter the game's publish date in format YYYY-MM-DD'),
+      label: get_input('Enter the game label'),
+      multiplayer: get_input('Enter whether the game is multiplayer (true/false)'),
+      last_played_at: get_input('Enter the last played date in format YYYY-MM-DD')
     }
   end
 
