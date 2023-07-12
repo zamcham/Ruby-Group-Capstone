@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 # rubocop:disable
 require_relative 'models/author'
 require_relative 'models/book'
