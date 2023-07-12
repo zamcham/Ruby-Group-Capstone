@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # rubocop:disable
 require_relative 'models/author'
 require_relative 'models/book'
@@ -99,7 +101,8 @@ class App
     else
       puts '-------------------'
       puts 'All Labels:'
-      Label.labels.each do |label|
+      unique_labels = Label.labels.uniq
+      unique_labels.each do |label|
         puts "Label Name: #{label.title}, Color: #{label.color}"
       end
     end

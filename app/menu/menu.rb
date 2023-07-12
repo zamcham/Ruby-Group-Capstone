@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Menu class represents the user interface menu for the console app.
 class Menu
   OPTIONS = {

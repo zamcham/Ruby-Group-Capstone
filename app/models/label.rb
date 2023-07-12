@@ -1,16 +1,19 @@
+# frozen_string_literal: true
+
 # Represents Label class.
 class Label
   attr_reader :title, :color, :items, :id, :labels
-  @@labels = []
+
+  @labels = []
+
+  class << self
+    attr_reader :labels
+  end
 
   def initialize(title, color = 'blue')
     @title = title
     @color = color
     @items = []
-  end
-
-  def self.labels
-    @@labels
   end
 
   def add_item(item)
