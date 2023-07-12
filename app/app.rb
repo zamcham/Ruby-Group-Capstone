@@ -61,9 +61,9 @@ class App
     if @music_albums.empty?
       puts 'No music album available.'
     else
-      puts '-------------------'
       puts 'All Music Albums:'
       @music_albums.each_with_index do |music_album, index|
+        puts '-------------------'
         puts "#{index + 1}. ID: #{music_album.id}" 
         puts "Title: #{music_album.title}, Label: #{music_album.label}," 
         puts "Genre: #{music_album.genre}, Author: #{music_album.author},"
@@ -167,7 +167,7 @@ class App
       author: get_input("Enter the Music Album's author"),
       label: get_input("Enter the Music Album's label"),
       publish_date: get_input("Enter the Music Album's publish date(yyyy-mm-dd)"),
-      on_spotify: get_input("Is it available on Spotify (Y/N)")
+      on_spotify: get_input("Is it available on Spotify (y/n)")
     }
   end
 

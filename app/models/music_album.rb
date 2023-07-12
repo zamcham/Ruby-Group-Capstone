@@ -14,7 +14,7 @@ class MusicAlbum < Item
       music_album_data[:label]
     )
     @title = music_album_data[:title]
-    @on_spotify = music_album_data[:on_spotify]
+    @on_spotify = music_album_data[:on_spotify].to_s.downcase == 'y'
   end
 
   def can_be_archived?

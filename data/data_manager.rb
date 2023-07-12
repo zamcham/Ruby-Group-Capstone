@@ -45,7 +45,7 @@ class DataManager
       author: item['author'],
       label: item['label'],
       publish_date: item['publish_date'],
-      on_spotify: item['on_spotify']
+      on_spotify: item['on_spotify'] == true
     }
     MusicAlbum.new(music_album_data)
   end
