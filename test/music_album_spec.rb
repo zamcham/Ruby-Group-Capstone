@@ -20,12 +20,12 @@ RSpec.describe MusicAlbum do
     end
 
     it 'returns true if published_date is older than 10 years and if on_spotify equals true.' do
-      music_album_data[:publish_date] = Date.today - 11 * 365
+      music_album_data[:publish_date] = Date.today - (11 * 365)
       expect(music_album.can_be_archived?).to be true
     end
 
     it 'returns false if published_date is older than 10 years and if on_spotify equals false.' do
-      music_album_data[:publish_date] = Date.today - 11 * 365
+      music_album_data[:publish_date] = Date.today - (11 * 365)
       music_album_data[:on_spotify] = 'n'
       expect(music_album.can_be_archived?).to be false
     end

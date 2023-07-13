@@ -2,7 +2,6 @@ require 'rspec'
 require_relative '../main'
 
 describe Main do
-
   let(:app) { double('App') }
   let(:menu) { double('Menu') }
 
@@ -28,7 +27,7 @@ describe Main do
     end
   end
 
-    describe '#run' do
+  describe '#run' do
     it 'loads data from files' do
       subject.run
     end
