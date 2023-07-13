@@ -10,7 +10,6 @@ require_relative '../data/data_manager'
 require_relative 'models/label'
 require 'date'
 
-# rubocop:disable Metrics/ClassLength
 class App
   attr_accessor :books, :music_albums, :genres, :games
 
@@ -31,18 +30,6 @@ class App
         puts "#{index + 1}. Title: #{book.title}, Author: #{book.author}"
         puts "Genre: #{book.genre}, Label: #{book.label}"
         puts "Publish Date: #{book.publish_date}, Publisher: #{book.publisher}, Cover State: #{book.cover_state}"
-      end
-    end
-  end
-
-  # TODO: Need to refactor based on proper methods
-  def list_all_people
-    if @people.empty?
-      puts 'No people available.'
-    else
-      puts 'All People:'
-      @people.each do |person|
-        puts "ID: #{person.id}, Name: #{person.name}, Age: #{person.age}, Type: #{person.class}"
       end
     end
   end
@@ -192,5 +179,4 @@ class App
     gets.chomp
   end
 end
-# rubocop:enable Metrics/ClassLength
 # rubocop:enable

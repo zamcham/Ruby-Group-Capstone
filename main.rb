@@ -1,15 +1,10 @@
 require_relative 'app/app'
 require_relative 'app/menu/menu'
 
-# Main class is used to start the app.
 class Main
   def initialize
     @app = App.new
     @menu = Menu.new(@app)
-  end
-
-  def display_menu
-    @app.display_menu
   end
 
   def run
