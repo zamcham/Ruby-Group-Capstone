@@ -16,7 +16,7 @@ RSpec.describe Item do
         expect(Label).to receive(:labels).and_return([label])
         expect(label).to receive(:add_item).with(kind_of(Item))
 
-        item = Item.new(genre, author, publish_date, 'New')
+        Item.new(genre, author, publish_date, 'New')
       end
     end
 
@@ -25,7 +25,7 @@ RSpec.describe Item do
         expect(Author).to receive(:authors).and_return([author])
         expect(author).to receive(:add_item).with(kind_of(Item))
 
-        item = Item.new(genre, 1, publish_date, label)
+        Item.new(genre, 1, publish_date, label)
       end
     end
 
@@ -34,7 +34,7 @@ RSpec.describe Item do
         expect(Genre).to receive(:genres).and_return([genre])
         expect(genre).to receive(:add_item).with(kind_of(Item))
 
-        item = Item.new('Horror', author, publish_date, label)
+        Item.new('Horror', author, publish_date, label)
       end
     end
   end

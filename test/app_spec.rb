@@ -13,7 +13,8 @@ RSpec.describe App do
 
     context 'when books are available' do
       it 'displays the list of books' do
-        book = Book.new(title: 'Book 1', author: 'Author 1', genre: 'Genre 1', label: 'Label 1', publish_date: '2023-01-01', publisher: 'Publisher 1', cover_state: 'New')
+        book = Book.new(title: 'Book 1', author: 'Author 1', genre: 'Genre 1', label: 'Label 1',
+                        publish_date: '2023-01-01', publisher: 'Publisher 1', cover_state: 'New')
         app.books << book
 
         expected_output = <<~OUTPUT
