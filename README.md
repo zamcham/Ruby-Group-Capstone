@@ -29,6 +29,8 @@
 
 **Ruby Capstone Project** is an app that will have the option to record what books, games, and music albums are in our library and includes labels, authors and genres
 
+[Click here for a video overview of our project](https://drive.google.com/file/d/1JEICCpc6Lro8aXNoMJ_uCR6nsz4HzTHt/view?usp=sharing)
+
 ## 🛠 Built With <a name="built-with"></a>
 
 ### Tech Stack <a name="tech-stack"></a>
