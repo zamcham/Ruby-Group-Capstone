@@ -1,5 +1,6 @@
 require 'date'
 require_relative 'label'
+require_relative 'author'
 require_relative 'genre'
 
 # Represents Item class (parent).
@@ -14,6 +15,7 @@ class Item
     @publish_date = publish_date
     @archived = false
     find_or_create_label(label).add_item(self) unless label.nil?
+    find_or_create_author(author).add_item(self) unless author.nil?
     find_or_create_genre(genre).add_item(self) unless genre.nil?
   end
 
@@ -24,6 +26,15 @@ class Item
     new_label = Label.new(label_title)
     Label.labels << new_label
     new_label
+  end
+
+  def find_or_create_author(id)
+    existing_author = Author.authors.find { |author| author.id == id }
+    return existing_author unless existing_author.nil?
+
+    new_author = Author.new(id, author, nil)
+    Author.authors << new_author
+    new_author
   end
 
   def find_or_create_genre(genre_name)
