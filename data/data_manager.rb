@@ -11,11 +11,13 @@ class DataManager
   def save_data_to_files
     save_to_json('books.json', serialize_books)
     save_to_json('games.json', serialize_games)
+    save_to_json('music_albums.json', serialize_music_albums)
   end
 
   def load_data_from_files
     @app.books = load_from_json('books.json')
     @app.games = load_from_json('games.json')
+    @app.music_albums = load_from_json('music_albums.json')
   end
 
   def save_to_json(filename, data)
@@ -28,8 +30,8 @@ class DataManager
 
     JSON.parse(File.read(filename)).map do |item|
       case item['type']
-      when 'Student'
-        load_student(item)
+      when 'MusicAlbum'
+        load_music_album(item)
       when 'Teacher'
         load_teacher(item)
       when 'Book'
@@ -42,9 +44,16 @@ class DataManager
     end
   end
 
-  def load_student(item)
-    Student.new(item['age'], item['classroom'], item['name'], parent_permission: item['parent_permission'],
-                                                              id: item['id'].to_i)
+  def load_music_album(item)
+    music_album_data = {
+      title: item['title'],
+      genre: item['genre'],
+      author: item['author'],
+      label: item['label'],
+      publish_date: item['publish_date'],
+      on_spotify: item['on_spotify'] == true
+    }
+    MusicAlbum.new(music_album_data)
   end
 
   def load_teacher(item)
@@ -126,6 +135,20 @@ class DataManager
         'game_name' => game.game_name,
         'multiplayer' => game.multiplayer,
         'last_played_at' => game.last_played_at
+      }
+    end
+  end
+
+  def serialize_music_albums
+    @app.music_albums.map do |music_album|
+      {
+        'type' => music_album.class.name,
+        'title' => music_album.title,
+        'author' => music_album.author,
+        'genre' => music_album.genre,
+        'publish_date' => music_album.publish_date,
+        'on_spotify' => music_album.on_spotify,
+        'label' => music_album.label
       }
     end
   end

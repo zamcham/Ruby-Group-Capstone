@@ -52,10 +52,12 @@ class App
       puts 'No music album available.'
     else
       puts 'All Music Albums:'
-      @music_albums.each do |music_album|
-        album_info = "ID: #{music_album.id}, Genre: #{music_album.genre}, " \
-                     "Author: #{music_album.author}, Publish date: #{music_album.publish_date}"
-        puts album_info
+      @music_albums.each_with_index do |music_album, index|
+        puts '-------------------'
+        puts "#{index + 1}. ID: #{music_album.id},"
+        puts "Title: #{music_album.title}, Label: #{music_album.label},"
+        puts "Genre: #{music_album.genre}, Author: #{music_album.author},"
+        puts "Publish date: #{music_album.publish_date}, On Spotify: #{music_album.on_spotify}"
       end
     end
   end
@@ -80,12 +82,13 @@ class App
   end
 
   def list_all_genres
-    if @genres.empty?
+    if Label.labels.empty?
       puts 'No genre available.'
     else
       puts '-------------------'
       puts 'All Genres:'
-      @genres.each do |genre|
+      unique_genres = Genre.genres.uniq
+      unique_genres.each do |genre|
         puts "ID: #{genre.id}, Genre: #{genre.name}"
       end
     end
@@ -136,20 +139,10 @@ class App
     puts 'Game created successfully.'
   end
 
-  def add_a_music_album
-    puts "\nAdd a new Music Album"
-    print 'Enter the Music Album\'s genre: '
-    genre_name = gets.chomp.to_s
-    genre = find_or_create_genre(genre_name)
-    print 'Enter the Music Album\'s author: '
-    author = gets.chomp
-    print 'Enter the Music Album\'s publish date(yyyy-mm-dd): '
-    publish_date = gets.chomp
-    print 'Is it available on Spotify (Y/N): '
-    on_spotify = gets.chomp.upcase
-    music_album = MusicAlbum.new(genre, author, publish_date, on_spotify)
+  def add_a_music_album(music_album_data = nil)
+    music_album_data ||= collect_music_album_data
+    music_album = MusicAlbum.new(music_album_data)
     @music_albums << music_album
-    genre.add_item(music_album)
     puts 'Music Album added successfully!'
   end
 
@@ -180,6 +173,17 @@ class App
       publish_date: get_input("Enter the book's publish date in format YYYY-MM-DD"),
       publisher: get_input("Enter the book's publisher"),
       cover_state: get_input("Enter the book's cover state")
+    }
+  end
+
+  def collect_music_album_data
+    {
+      title: get_input("Enter the Music Album's title"),
+      genre: get_input("Enter the Music Album's genre"),
+      author: get_input("Enter the Music Album's author"),
+      label: get_input("Enter the Music Album's label"),
+      publish_date: get_input("Enter the Music Album's publish date(yyyy-mm-dd)"),
+      on_spotify: get_input('Is it available on Spotify (y/n)')
     }
   end
 
