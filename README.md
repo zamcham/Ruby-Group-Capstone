@@ -83,9 +83,6 @@ Once you have ruby installed, [clone this repository](https://docs.github.com/en
 **For running tests**
 run the following command: `rspec test/*`
 
-
-Navigate to the repository and run `ruby main.rb`
-
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- AUTHORS -->
