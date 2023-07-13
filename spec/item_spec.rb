@@ -38,4 +38,28 @@ RSpec.describe Item do
       end
     end
   end
+
+  describe '#can_be_archived?' do
+    it 'returns true if the item can be archived' do
+      item = Item.new(genre, author, Date.today - (11 * 365), label)
+      expect(item.can_be_archived?).to be true
+    end
+
+    it 'returns false if the item cannot be archived' do
+      item = Item.new(genre, author, Date.today - (9 * 365), label)
+      expect(item.can_be_archived?).to be false
+    end
+  end
+
+  describe '#move_to_archive' do
+    it 'sets the archived flag based on can_be_archived?' do
+      item = Item.new(genre, author, Date.today - (11 * 365), label)
+      item.move_to_archive
+      expect(item.archived).to be true
+
+      item = Item.new(genre, author, Date.today - (9 * 365), label)
+      item.move_to_archive
+      expect(item.archived).to be false
+    end
+  end
 end
