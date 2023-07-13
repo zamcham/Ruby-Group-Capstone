@@ -35,18 +35,6 @@ class App
     end
   end
 
-  # TODO: Need to refactor based on proper methods
-  def list_all_people
-    if @people.empty?
-      puts 'No people available.'
-    else
-      puts 'All People:'
-      @people.each do |person|
-        puts "ID: #{person.id}, Name: #{person.name}, Age: #{person.age}, Type: #{person.class}"
-      end
-    end
-  end
-
   def list_all_music_albums
     if @music_albums.empty?
       puts 'No music album available.'
