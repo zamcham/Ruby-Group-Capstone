@@ -1,3 +1,5 @@
+# rubocop:disable Metrics/CyclomaticComplexity
+
 require 'json'
 require_relative '../app/app'
 
@@ -8,10 +10,12 @@ class DataManager
 
   def save_data_to_files
     save_to_json('books.json', serialize_books)
+    save_to_json('games.json', serialize_games)
   end
 
   def load_data_from_files
     @app.books = load_from_json('books.json')
+    @app.games = load_from_json('games.json')
   end
 
   def save_to_json(filename, data)
@@ -32,6 +36,8 @@ class DataManager
         load_book(item)
       when 'Rental'
         load_rental(item)
+      when 'Game'
+        load_game(item)
       end
     end
   end
@@ -56,6 +62,19 @@ class DataManager
       cover_state: item['cover_state']
     }
     Book.new(book_data)
+  end
+
+  def load_game(item)
+    game_data = {
+      genre: item['genre'],
+      author: item['author'],
+      publish_date: item['publish_date'],
+      label: item['label'],
+      game_name: item['game_name'],
+      multiplayer: item['multiplayer'],
+      last_played_at: item['last_played_at']
+    }
+    Game.new(game_data)
   end
 
   def load_rental(item)
@@ -95,4 +114,21 @@ class DataManager
       }
     end
   end
+
+  def serialize_games
+    @app.games.map do |game|
+      {
+        'type' => game.class.name,
+        'genre' => game.genre,
+        'author' => game.author,
+        'publish_date' => game.publish_date,
+        'label' => game.label,
+        'game_name' => game.game_name,
+        'multiplayer' => game.multiplayer,
+        'last_played_at' => game.last_played_at
+      }
+    end
+  end
 end
+
+# rubocop:enable Metrics/CyclomaticComplexity
