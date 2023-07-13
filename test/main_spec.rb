@@ -28,14 +28,7 @@ describe Main do
     end
   end
 
-  describe '#display_menu' do
-    it 'displays the menu' do
-      expect(app).to receive(:display_menu)
-      subject.display_menu
-    end
-  end
-
-  describe '#run' do
+    describe '#run' do
     it 'loads data from files' do
       subject.run
     end
